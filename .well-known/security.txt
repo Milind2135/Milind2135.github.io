@@ -1,0 +1,5 @@
+# Security contact for milind2135.github.io (RFC 9116)
+Contact: mailto:milindvchavan@gmail.com
+Expires: 2027-11-17T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://milind2135.github.io/.well-known/security.txt
