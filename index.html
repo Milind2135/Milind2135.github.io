@@ -135,12 +135,15 @@
   .ai-head h3{font-size:22px;margin:4px 0 8px}
   .ai-sub{color:var(--body);max-width:640px;font-size:15px}
   .ai-head .btn{white-space:nowrap}
-  .agents{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:20px}
+  .agents{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:12px;margin-top:20px}
+  @media (max-width:1020px){.agents{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.agents{grid-template-columns:1fr;grid-auto-rows:auto}}
   .agent{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:14px}
   .agent b{font-family:var(--mono);font-size:13.5px;color:var(--accent)}
   .agent b::before{content:"▸ ";color:var(--dim)}
   .agent p{font-size:13.5px;color:var(--body);margin-top:6px}
   .lead-agent{border-color:var(--accent)}
+  .wip{font-family:var(--mono);font-size:11.5px;color:var(--warn);white-space:nowrap}
   .ai .tags{padding-top:16px}
 
   /* NIST CSF */
@@ -315,7 +318,7 @@
   <section id="ai-agents" class="reveal" aria-labelledby="h-ai">
     <div class="sec-label">// ai_lab</div>
     <h2 id="h-ai">AI for Security: Agents I've Worked On</h2>
-    <p class="sub">A personal project: seven AI agents that automate core security-operations work, each producing evidence-backed, sourced output.</p>
+    <p class="sub">A personal project: eight AI agents that automate core security-operations and risk work, each producing evidence-backed, sourced output.</p>
     <article class="card ai">
       <div class="ai-head">
         <div>
@@ -324,15 +327,16 @@
         <a class="btn primary" href="https://github.com/Milind2135/AI-Security-Agents/tree/main/.github/agents" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
       </div>
       <div class="agents">
+        <div class="agent lead-agent"><b>team-manager</b><p>Routes a security request to the right agents or human teams in a safe order, then merges their reports into one summary where every conclusion names its source.</p></div>
         <div class="agent"><b>vm-triage</b><p>Researches one CVE from public sources (KEV, EPSS, CVSS, exploitation, IOCs, detections, fixes) and produces a cited 26-section report.</p></div>
         <div class="agent"><b>vulnerability-hunt</b><p>Takes vm-triage's output plus your inventory and decides, asset by asset, whether you're affected and exposed and how urgently to act, with fix-verification steps and ticket drafts.</p></div>
-        <div class="agent"><b>soc-analyst</b><p>Two jobs: <strong>triages</strong> one security alert and recommends one of seven dispositions, with an evidence log, a timeline and ATT&amp;CK mapping; or <strong>hunts</strong> for threats no alert caught, writing SIEM queries and reporting Found / Not found / Inconclusive with data coverage. Rates every indicator&#39;s confidence, measures attack speed and spread, and checks for automated and AI-agent attacks.</p></div>
+        <div class="agent"><b>soc-analyst</b><p>Two jobs: <strong>triages</strong> one alert and recommends one of seven dispositions with evidence, a timeline and ATT&amp;CK mapping; or <strong>hunts</strong> for threats no alert caught and reports Found / Not found / Inconclusive with data coverage.</p></div>
         <div class="agent"><b>cloud-security-analyst</b><p>Finds real attack paths in cloud IaC, IAM and CSPM data, and triages cloud alerts by correlating them with audit logs.</p></div>
         <div class="agent"><b>threat-modeler</b><p>Builds an evidence-based threat model from code and design documents: a data-flow diagram reviewed by a human, STRIDE threats, validation of existing controls and prioritised risks.</p></div>
         <div class="agent"><b>threat-intel-analyst</b><p>Profiles a threat actor, campaign or indicator set from public sources: ATT&amp;CK techniques, IOCs, attribution with competing hypotheses, published detection rules and STIX-style output.</p></div>
-        <div class="agent lead-agent"><b>team-manager</b><p>Routes a security request to the right agents or human teams in a safe order, then merges their reports into one summary where every conclusion names its source.</p></div>
+        <div class="agent"><b>third-party-risk-analyst</b> <span class="wip">(in progress)</span><p>Assesses a vendor across its whole life: tiers it by inherent risk × criticality, checks its answers against evidence (SOC 2, certificates, contract), finds gaps and prepares a decision pack for a named approver.</p></div>
       </div>
-      <div class="chips tags"><span class="chip">AI Agents</span><span class="chip">Vulnerability Triage</span><span class="chip">SOC Automation</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">STRIDE</span><span class="chip">Threat Intel</span><span class="chip">Cloud Security</span></div>
+      <div class="chips tags"><span class="chip">AI Agents</span><span class="chip">Vulnerability Triage</span><span class="chip">SOC Automation</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">STRIDE</span><span class="chip">Threat Intel</span><span class="chip">Cloud Security</span><span class="chip">Third-Party Risk</span></div>
     </article>
   </section>
 
@@ -641,7 +645,7 @@
     certs: '[✓] CISM   ISACA\n[✓] OSCP   OffSec\n[✓] CCSK   Cloud Security Alliance\n[✓] CEH    EC-Council (v5)\n[✓] AWS Cloud Security — Linux Academy\n[✓] CCNA   Cisco',
     skills: '<span class="c">## Skills & Tooling</span>\nleadership & mgmt : Team Leadership, Hiring & Mentoring, Stakeholder Mgmt,\n                    Executive Reporting, Vendor & Third-Party Risk,\n                    Tool Evaluation & Selection, Regulator & Auditor Liaison,\n                    Program & Project Mgmt, Incident Leadership, Change Mgmt,\n                    Global Collaboration\nrisk & governance : Technology Risk Mgmt, Cyber Governance, Third-Party Risk,\n                    ISO 27001, PCI-DSS, RBI / SEBI, CERT-In, Policies & Controls\nexposure & assess : Vulnerability Mgmt, Risk Prioritization, VAPT, AppSec,\n                    Bug Bounty / VDP, Threat Modeling, DevSecOps\ncloud & detection : Wiz, AWS, Azure, CSPM, Elastic SIEM, IBM QRadar,\n                    MS Defender, CrowdStrike\ntools & platforms : Tenable / Nessus, Rapid7, Qualys, Burp Suite, Kali Linux,\n                    HackerOne, Bugcrowd, Automox, KnowBe4, ServiceNow, Jira',
     frameworks: 'ISO 27001 · PCI-DSS · NIST CSF · RBI / SEBI · CERT-In',
-    'ai-agents': '<span class="c">## AI Security Agents</span>  (7 agents)\nvm-triage .............. one CVE → cited 26-section report (KEV, EPSS, CVSS, IOCs, fixes)\nvulnerability-hunt ..... asset-by-asset exposure & urgency, fix checks, ticket drafts\nsoc-analyst ............ alert triage + threat hunts: 7 dispositions, SIEM queries, ATT&CK\ncloud-security-analyst . attack paths in IaC / IAM / CSPM; cloud alert triage\nthreat-modeler ......... DFD + STRIDE threats, control validation, prioritised risks\nthreat-intel-analyst ... actor/campaign profiles, ATT&CK, IOCs, STIX-style output\nteam-manager ........... routes requests & merges reports, every conclusion sourced\n\n→ <a href="https://github.com/Milind2135/AI-Security-Agents/tree/main/.github/agents" target="_blank" rel="noopener noreferrer" style="color:#5CB8FF;text-decoration:underline">github.com/Milind2135/AI-Security-Agents</a>',
+    'ai-agents': '<span class="c">## AI Security Agents</span>  (8 agents)\nvm-triage .............. one CVE → cited 26-section report (KEV, EPSS, CVSS, IOCs, fixes)\nvulnerability-hunt ..... asset-by-asset exposure & urgency, fix checks, ticket drafts\nsoc-analyst ............ alert triage + threat hunts: 7 dispositions, SIEM queries, ATT&CK\ncloud-security-analyst . attack paths in IaC / IAM / CSPM; cloud alert triage\nthreat-modeler ......... DFD + STRIDE threats, control validation, prioritised risks\nthreat-intel-analyst ... actor/campaign profiles, ATT&CK, IOCs, STIX-style output\nthird-party-risk-analyst vendor tiering, evidence review, decision pack (in progress)\nteam-manager ........... routes requests & merges reports, every conclusion sourced\n\n→ <a href="https://github.com/Milind2135/AI-Security-Agents/tree/main/.github/agents" target="_blank" rel="noopener noreferrer" style="color:#5CB8FF;text-decoration:underline">github.com/Milind2135/AI-Security-Agents</a>',
     github: '<a href="https://github.com/Milind2135/AI-Security-Agents" target="_blank" rel="noopener noreferrer" style="color:#5CB8FF;text-decoration:underline">github.com/Milind2135/AI-Security-Agents</a>',
     contact: 'email    : milindvchavan@gmail.com\nlinkedin : linkedin.com/in/milindvchavan\ngithub   : github.com/Milind2135\nlocation : Mumbai, India\navailable: India (Mumbai preferred) or remote',
     sudo: '<span class="e">milind is not in the sudoers file. This incident will be reported.</span> 😉'
